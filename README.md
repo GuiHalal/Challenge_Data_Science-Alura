@@ -1,2 +1,2 @@
 # Challenge Data Science Alura
-This repository is to concentrate the construction of the material during the execution of the tasks of Alura's Challenge Data Science.
+This repository is for the concentration of scripts and code developed during the execution of Alura's Challenge Data Science tasks.
