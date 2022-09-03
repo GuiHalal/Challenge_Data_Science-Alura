@@ -1,3 +1,10 @@
+SELECT * FROM dados_mutuarios;
+
+SELECT * FROM emprestimos;
+	
+SELECT * FROM historicos_banco;
+	
+SELECT * FROM ids;
 
 --  VERIFICAR QUAIS SÃO AS INCONSISTÊNCIAS NOS DADOS 
 -- ********************************************************
@@ -32,16 +39,17 @@ SELECT COUNT(*) FROM(
 -- ### Identificados 2046 registros  incompletos em dados_mutuarios
 
 SELECT * FROM emprestimos WHERE
-	loan_id = '' 	OR
-	ISNULL(loan_id) = TRUE OR
-    loan_intent = '' OR 
-    ISNULL(loan_intent) = TRUE OR
-    loan_grade = '' OR 
-    ISNULL(loan_grade) = TRUE OR
-    loan_amnt = '' OR 
-    ISNULL(loan_int_rate) = TRUE OR
-    ISNULL(loan_status) = TRUE OR
-    ISNULL(loan_percent_income) = TRUE;
+		loan_id = '' 	OR
+		ISNULL(loan_id) = TRUE OR
+		loan_intent = '' OR 
+		ISNULL(loan_intent) = TRUE OR
+		loan_grade = '' OR 
+		ISNULL(loan_grade) = TRUE OR
+		loan_amnt = '' OR 
+        ISNULL(loan_amnt) = TRUE OR
+		ISNULL(loan_int_rate) = TRUE OR
+		ISNULL(loan_status) = TRUE OR
+		ISNULL(loan_percent_income) = TRUE;
     
 SELECT COUNT(*) FROM( 
 	SELECT * FROM emprestimos WHERE
@@ -58,6 +66,13 @@ SELECT COUNT(*) FROM(
 		ISNULL(loan_percent_income) = TRUE
     ) A;
 -- ### Identificados 4654 registros incompletos em emprestimos
+
+SELECT * FROM historicos_banco WHERE 
+	cb_id = '' 	OR
+	ISNULL(cb_id) = TRUE OR
+    cb_person_default_on_file = '' OR 
+    ISNULL(cb_person_default_on_file) = TRUE OR
+    ISNULL(cb_person_cred_hist_length) = TRUE;
 
 SELECT COUNT(*) FROM( 
 SELECT * FROM historicos_banco WHERE 
@@ -113,6 +128,8 @@ select distinct loan_status FROM emprestimos
 
 	-- ### historicos_banco
 SELECT DISTINCT cb_person_default_on_file FROM historicos_banco;
+-- Dados com campos fora do padão * não localizado nenhum *
 
 SELECT MAX(cb_person_cred_hist_length) AS MAXIMO, MIN(cb_person_cred_hist_length) AS MINIMO 
 FROM historicos_banco;
+-- Dados com campos fora do padão * não localizado nenhum *
