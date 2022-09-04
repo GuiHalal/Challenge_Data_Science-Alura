@@ -12,6 +12,9 @@ UPDATE dados_mutuarios SET person_home_ownership = 'Outros'
 WHERE person_home_ownership = 'Other';
 SELECT distinct person_home_ownership FROM dados_mutuarios;
 
+select distinct person_home_ownership from dados_mutuarios;
+
+
 -- traduzindo os dados de emprestimos.loan_intent	
 UPDATE emprestimos SET loan_intent = 'Pessoal'
 WHERE loan_intent = 'Personal'; 
@@ -25,3 +28,11 @@ UPDATE emprestimos SET loan_intent = 'Melhora do lar'
 WHERE loan_intent = 'Homeimprovement';
 UPDATE emprestimos SET loan_intent = 'Pagamento de débitos'
 WHERE loan_intent = 'Debtconsolidation';
+
+select distinct loan_intent from emprestimos;
+
+
+UPDATE historicos_banco SET cb_person_default_on_file = 'S'
+WHERE cb_person_default_on_file = 'Y';
+
+select distinct cb_person_default_on_file from historicos_banco;
